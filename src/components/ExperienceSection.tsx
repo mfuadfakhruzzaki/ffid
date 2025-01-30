@@ -23,7 +23,7 @@ export function ExperienceSection({ experiences }: ExperiencesSectionProps) {
   }
 
   return (
-    <section className="py-8">
+    <section id="experience" className="py-8">
       <h2 className="text-2xl font-bold mb-4">Experiences</h2>
       <ul className="space-y-4">
         {experiences.map((exp, index) => (

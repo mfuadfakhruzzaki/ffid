@@ -22,7 +22,7 @@ const EducationsSection: FC<EducationsSectionProps> = ({ educations }) => {
   }
 
   return (
-    <section className="my-8">
+    <section id="education" className="my-8">
       <h2 className="text-2xl font-bold mb-4">Educations</h2>
       <ul className="space-y-4">
         {educations.map((edu) => (

@@ -18,7 +18,7 @@ const ContactsSection: FC<ContactsSectionProps> = ({ contacts }) => {
   }
 
   return (
-    <section className="my-8">
+    <section id="contact" className="my-8">
       <h2 className="text-2xl font-bold mb-4">Contacts</h2>
       <ul className="space-y-4">
         {contacts.map((contact) => (
