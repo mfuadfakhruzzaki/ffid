@@ -53,14 +53,14 @@ const ContactsSection: FC<ContactsSectionProps> = ({
 
       // Asumsi response GIN: { "message": "success", "inserted_id": "<doc_id>" }
       await res.json();
-      setSuccess("Contact submitted successfully.");
+      setSuccess("Mesaage submitted successfully.");
 
       // Reset form
       setName("");
       setEmail("");
       setMessage("");
     } catch (err: any) {
-      setError(err.message || "Error submitting contact");
+      setError(err.message || "Error submitting message");
     } finally {
       setLoading(false);
     }
