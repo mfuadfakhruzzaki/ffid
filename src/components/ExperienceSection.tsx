@@ -1,5 +1,14 @@
-// app/components/ExperiencesSection.tsx
+"use client";
+
 import { FC } from "react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 interface Experience {
   id: string;
@@ -17,33 +26,67 @@ interface ExperiencesSectionProps {
   experiences: Experience[];
 }
 
-export function ExperienceSection({ experiences }: ExperiencesSectionProps) {
+const ExperiencesSection: FC<ExperiencesSectionProps> = ({ experiences }) => {
   if (!experiences || experiences.length === 0) {
     return <div>No experience data available.</div>;
   }
 
   return (
-    <section id="experience" className="py-8">
-      <h2 className="text-2xl font-bold mb-4">Experiences</h2>
-      <ul className="space-y-4">
+    <section
+      id="experience"
+      className="
+        w-full
+        py-8
+        px-4 sm:px-8 md:px-32
+      "
+    >
+      <h2
+        className="
+          text-2xl sm:text-3xl md:text-4xl
+          font-bold
+          text-gray-800 dark:text-gray-100
+          mb-6
+        "
+      >
+        Experiences
+      </h2>
+
+      {/* Grid atau list container */}
+      <ul className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {experiences.map((exp, index) => (
-          // Gunakan key unik, misalnya exp.id, fallback ke index jika id tidak ada
-          <li key={exp.id ?? index} className="border p-4 rounded-md">
-            <h3 className="text-lg font-semibold">{exp.title}</h3>
-            <p className="text-gray-600">{exp.company}</p>
-            <p className="text-gray-600">{exp.location}</p>
-            <p className="text-gray-500">
-              {exp.start_date} - {exp.end_date}
-            </p>
-            <p className="mt-2 text-gray-700">{exp.description}</p>
-            <span className="text-sm text-blue-600 italic">
-              {exp.experience_type}
-            </span>
+          <li key={exp.id ?? index}>
+            <Card
+              className="
+                bg-white dark:bg-gray-800 
+                border border-gray-300 dark:border-gray-700
+                shadow transition-transform hover:-translate-y-1 hover:shadow-lg
+              "
+            >
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {exp.title}
+                </CardTitle>
+                <CardDescription className="text-sm text-gray-600 dark:text-gray-300">
+                  {exp.company} — {exp.location}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-gray-700 dark:text-gray-200">
+                <p className="mb-2">
+                  <strong>Period:</strong> {exp.start_date} - {exp.end_date}
+                </p>
+                <p className="leading-relaxed">{exp.description}</p>
+              </CardContent>
+              <CardFooter>
+                <span className="text-xs text-blue-600 dark:text-blue-400 italic">
+                  {exp.experience_type}
+                </span>
+              </CardFooter>
+            </Card>
           </li>
         ))}
       </ul>
     </section>
   );
-}
+};
 
-export default ExperienceSection;
+export default ExperiencesSection;
