@@ -25,7 +25,7 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 bg-white/30 dark:bg-gray-900/30 backdrop-blur-md ">
       <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo / Brand */}
-        <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <div className="text-xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
           <a href="#home">
             Fuad Fakhruz<span className="text-red-500">.</span>
           </a>
@@ -34,10 +34,7 @@ export default function NavBar() {
         {/* Nav Menu (disembunyikan di mobile) */}
         <ul className="hidden md:flex space-x-6 font-bold text-lg text-gray-700 dark:text-gray-300">
           <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#profile">About me</a>
+            <a href="#">About me</a>
           </li>
           <li>
             <a href="#education">Educations</a>

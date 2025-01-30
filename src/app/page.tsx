@@ -63,7 +63,7 @@ export default async function HomePage() {
   const contactsData = await contactsRes.json();
 
   return (
-    <div className="max-w-screen-2xl items-center justify-center mx-auto">
+    <div className="max-w-screen-2xl items-center justify-center mx-auto my-2">
       {/* Masing-masing komponen menerima data JSON dari endpoint terkait */}
       <ProfilesSection profiles={profilesData} />
       <EducationsSection educations={educationsData} />
