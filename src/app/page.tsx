@@ -71,7 +71,7 @@ export default async function HomePage() {
       <CertificationsSection certifications={certificationsData} />
       <ProjectsSection projects={projectsData} />
       <HonorsSection honors={honorsData} />
-      <ContactsSection contacts={contactsData} />
+      <ContactsSection />
     </div>
   );
 }
