@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { MapPin, Mail, Phone, Globe } from "lucide-react";
+import { MapPin, Mail, Phone, Globe, Download } from "lucide-react";
 
 interface Profile {
   id: string;
@@ -26,8 +26,7 @@ const ProfilesSection: FC<ProfileSectionProps> = ({ profiles }) => {
     return <div>No profile data found.</div>;
   }
 
-  // Ambil profil pertama (jika hanya satu hero utama)
-  const profile = profiles[0];
+  const profile = profiles[0]; // Ambil profil pertama jika hanya ada satu
 
   return (
     <section
@@ -37,10 +36,7 @@ const ProfilesSection: FC<ProfileSectionProps> = ({ profiles }) => {
         flex flex-col md:flex-row
         items-center
         px-4 sm:px-8 md:px-32
-        py-8
-        gap-8
-        /* Hilangkan border/h-screen/justify-between 
-           agar tampilan lebih fleksibel di mobile */
+        py-8 gap-8
       "
     >
       {/* Bagian Gambar Bundar */}
@@ -57,9 +53,9 @@ const ProfilesSection: FC<ProfileSectionProps> = ({ profiles }) => {
       {/* Bagian Teks */}
       <div
         className="flex flex-col w-full md:w-1/2 
-                      text-center md:text-end 
-                      items-center md:items-end 
-                      gap-4"
+                   text-center md:text-end 
+                   items-center md:items-end 
+                   gap-4"
       >
         <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 dark:text-gray-100">
           {profile.full_name}
@@ -98,6 +94,25 @@ const ProfilesSection: FC<ProfileSectionProps> = ({ profiles }) => {
             </span>
           </p>
         </div>
+
+        {/* Tombol Download CV */}
+        {profile.cv_url && (
+          <a
+            href={profile.cv_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex items-center justify-center md:justify-end gap-2
+              px-4 py-2 text-md font-semibold
+              rounded-md transition
+              text-white bg-black hover:bg-gray-800
+              dark:bg-blue-600 dark:hover:bg-blue-700
+            "
+          >
+            <Download size={20} />
+            Download CV
+          </a>
+        )}
       </div>
     </section>
   );
