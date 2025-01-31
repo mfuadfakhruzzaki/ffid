@@ -1,4 +1,5 @@
 // app/page.tsx
+
 import ProfilesSection from "@/components/ProfileSection";
 import EducationsSection from "@/components/EducationSection";
 import ExperiencesSection from "@/components/ExperienceSection";
@@ -7,12 +8,12 @@ import ProjectsSection from "@/components/ProjectSection";
 import HonorsSection from "@/components/HonorSection";
 import ContactsSection from "@/components/ContactSection";
 
+// Menonaktifkan caching: selalu refetch data saat reload halaman
+export const revalidate = 0;
+
 export default async function HomePage() {
   // 1. Fetch Profiles
-  const profilesRes = await fetch("https://api.fuadfakhruz.id/profiles", {
-    // Tambah { cache: "no-store" } jika perlu data real-time
-    // Tambah headers: { Authorization: `Bearer YOUR_TOKEN` } jika butuh token
-  });
+  const profilesRes = await fetch("https://api.fuadfakhruz.id/profiles");
   if (!profilesRes.ok) {
     throw new Error("Failed to fetch profiles");
   }
@@ -61,16 +62,19 @@ export default async function HomePage() {
     throw new Error("Failed to fetch contacts");
   }
   const contactsData = await contactsRes.json();
+  // Meski data diambil, kita tak meneruskannya ke <ContactsSection />
+  // (karena di code terakhir, <ContactsSection /> belum butuh data props).
 
   return (
     <div className="max-w-screen-2xl items-center justify-center mx-auto my-2">
-      {/* Masing-masing komponen menerima data JSON dari endpoint terkait */}
       <ProfilesSection profiles={profilesData} />
       <EducationsSection educations={educationsData} />
       <ExperiencesSection experiences={experiencesData} />
       <CertificationsSection certifications={certificationsData} />
       <ProjectsSection projects={projectsData} />
       <HonorsSection honors={honorsData} />
+      {/* Komponen ContactsSection tidak menerima contacts, 
+          tapi Anda bisa menyesuaikannya bila diperlukan */}
       <ContactsSection />
     </div>
   );
