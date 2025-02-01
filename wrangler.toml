@@ -1,0 +1,12 @@
+name = "ffid"
+compatibility_date = "2025-02-01"
+
+[build]
+command = "npm run build"
+cwd = "./"
+
+[env.production]
+node_compat = true
+
+[vars]
+NODE_VERSION = "18.18.0"
