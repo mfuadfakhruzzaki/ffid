@@ -14,7 +14,7 @@ import { ExternalLink } from "lucide-react"; // ikon link lucide-react (opsional
 
 interface Project {
   id: string;
-  name: string;
+  title: string;
   description: string;
   start_date: string;
   end_date: string;
@@ -64,7 +64,7 @@ const ProjectsSection: FC<ProjectsSectionProps> = ({ projects }) => {
             >
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {project.name}
+                  {project.title}
                 </CardTitle>
                 <CardDescription className="text-sm text-gray-600 dark:text-gray-300">
                   {project.start_date} - {project.end_date}
